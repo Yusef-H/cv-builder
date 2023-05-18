@@ -1,12 +1,14 @@
 
 form{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 10px;
+    width: clamp(400px, 80vmin, 500px);
 }
 
 form > div{
-    flex: 1;
+    width: 100%;
+    font-size: clamp(15px, 3vmin, 30px);
     display: flex;
     justify-content: space-between;
     gap: 5px;
@@ -16,4 +18,24 @@ h2{
     text-decoration: underline;
     justify-self: center;
     text-align: center;
+}
+
+button{
+    border: none;
+    background-color: black;
+    color:white;
+    padding: 10px;
+    border-radius: 8px;
+}
+button:hover{
+    background-color: rgb(99, 95, 95);
+    cursor: pointer;
+}
+
+.form-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
