@@ -1,0 +1,19 @@
+
+form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+form > div{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+h2{
+    text-decoration: underline;
+    justify-self: center;
+    text-align: center;
+}
