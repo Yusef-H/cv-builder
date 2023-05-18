@@ -3,13 +3,13 @@ import React, {Component} from 'react';
 
 class GeneralInfo extends Component{
     render() {
-        const { firstName, lastName, email, phone, handleInputChange } = this.props;
+        const handleInputChange = this.props.handleInputChange;
 
         return(
             <form>
                 <div>
                     <label htmlFor="first-name">First Name:</label>
-                    <input type="text" id="first-name" name="firstName"  onChange={handleInputChange}></input>
+                    <input type="text" id="first-name"  name="firstName"  onChange={handleInputChange}></input>
                 </div>
                 <div>
                     <label htmlFor="last-name">Last Name:</label>

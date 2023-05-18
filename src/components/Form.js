@@ -1,48 +1,44 @@
 import '../styles/Form.css'
+import React, { Component } from 'react';
 import GeneralInfo from './GeneralInfo';
 import Experience from './Experience';
-import React, {Component} from 'react';
 
-class Form extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            experiences: []
-        };
+class Form extends Component {
+  render() {
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      experiences,
+      handleInputChange,
+      addExperience,
+      updateExperience
+    } = this.props;
 
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.addExperience = this.addExperience.bind(this);
-    }
+    return (
+      <div className="form-content">
+        <h2>General Information</h2>
+        <GeneralInfo
+          firstName={firstName}
+          lastName={lastName}
+          email={email}
+          phone={phone}
+          handleInputChange={handleInputChange}
+        />
 
-    handleInputChange(event) {
-        const {name, value} = event.target;
-        console.log(name+"   " + value);
-        this.setState({[name]: value});
-    }
+        <button onClick={addExperience}>Add Experience</button>
 
-    addExperience() {
-        this.setState((prevState) => ({
-            experiences: [...prevState.experiences, {}]
-        }))
-    }
-
-    render(){
-        return (
-            <div className="form-content">
-                <h2>General Information</h2>
-                <GeneralInfo {...this.state} handleInputChange = {this.handleInputChange} />
-
-                <button onClick={this.addExperience}>Add Experience</button>
-                {this.state.experiences.map((experience, key) => (
-                    <Experience key={key} handleInputChange={this.handleInputChange}/>
-                ))}
-            </div>
-        );
-    }
+        {experiences.map((experience, key) => (
+          <Experience
+            key={key}
+            experience={experience}
+            updateExperience={updateExperience}
+          />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default Form;
