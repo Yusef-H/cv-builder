@@ -3,6 +3,7 @@ class Preview extends Component{
 
     render() {
         const { firstName, lastName, email, phone, experiences } = this.props;
+        // console.log(experiences[0]);
         return (
             <>
                 <h2>Preview of CV:</h2>

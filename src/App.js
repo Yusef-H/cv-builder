@@ -36,10 +36,11 @@ class App extends Component {
     }));
   }
 
-  updateExperience(index, experienceData) {
+  updateExperience(experienceData) {
     this.setState((prevState) => {
+      let i = prevState.experiences.length - 1;
       const updatedExperiences = [...prevState.experiences];
-      updatedExperiences[index] = experienceData;
+      updatedExperiences[i] = experienceData;
       return { experiences: updatedExperiences };
     });
   };

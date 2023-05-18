@@ -19,7 +19,7 @@ class Experience extends Component {
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value }, () => {
-        this.props.updateExperience(this.props.index, this.state);
+        this.props.updateExperience(this.state);
     });
   };
 
