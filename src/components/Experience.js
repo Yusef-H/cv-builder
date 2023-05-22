@@ -69,6 +69,8 @@ class Experience extends Component {
               onChange={this.handleInputChange}
             />
           </div>
+          
+          
           <div>
             <label htmlFor="description">Description:</label>
             <textarea

@@ -22,3 +22,60 @@
 .header p{
     margin-bottom: 0;
 }
+p{
+    margin: 0;
+}
+
+hr{
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border: none;
+    background-color:cornflowerblue;
+    height: 3px;
+    width: 100%;
+}
+
+.experiences-section{
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.exp-title{
+    color:cornflowerblue;
+    text-decoration: none;
+}
+
+.exp-container{
+    margin-bottom: 40px;
+}
+
+
+
+
+.job-title-info{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.job-title-info .titles{
+    margin-bottom: 15px;
+    display: flex;
+    gap: 15px;
+    font-size: clamp(13px, 3vmin, 40px);
+    color :rgb(99, 97, 97);
+    
+}
+.job-title-info .dates{
+    margin-bottom: 20px;
+    display: flex;
+    color :rgb(99, 97, 97);
+    gap: 15px;
+}
+
+.desc{
+    color:black;
+}
+
+
+
