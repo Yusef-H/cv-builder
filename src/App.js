@@ -17,13 +17,20 @@ class App extends Component {
         startDate: '2022-01-01',
         endDate: '2023-05-01',
         description: 'Worked on developing and maintaining web applications using modern technologies.'
+      }],
+      educations: [{
+        degreeType: 'Computer Science',
+        university: 'ABC University',
+        startDate: '2018-09-01',
+        endDate: '2022-06-30',
+        description: 'Studied computer science and gained knowledge in programming, algorithms, and software development.'
       }]
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.addExperience = this.addExperience.bind(this);
-    this.updateExperience = this.updateExperience.bind(this);
-    this.deleteExperience = this.deleteExperience.bind(this);
+    this.addToArrayProp = this.addToArrayProp.bind(this);
+    this.updateArrayProp = this.updateArrayProp.bind(this);
+    this.deleteArrayProp = this.deleteArrayProp.bind(this);
   }
 
   handleInputChange(event) {
@@ -31,33 +38,56 @@ class App extends Component {
     this.setState({ [name]: value });
   }
 
-  addExperience() {
-    this.setState((prevState) => ({
-      experiences: [...prevState.experiences, {
-        jobTitle: '',
-        company: '',
-        startDate: '',
-        endDate: '',
-        description: ''
-      }]
-    }));
+  addToArrayProp(type) {
+    if(type === 'experience'){
+      this.setState((prevState) => ({
+        experiences: [...prevState.experiences, {
+          jobTitle: '',
+          company: '',
+          startDate: '',
+          endDate: '',
+          description: ''
+        }]
+      }));
+    }
+    else{
+      this.setState((prevState) => ({
+        educations: [...prevState.educations, {
+          degreeType: '',
+          university: '',
+          startDate: '',
+          endDate: '',
+          description: ''
+        }]
+      }));
+    }
   }
 
-  updateExperience(experienceData) {
-    this.setState((prevState) => {
-      let i = prevState.experiences.length - 1;
-      const updatedExperiences = [...prevState.experiences];
-      updatedExperiences[i] = experienceData;
-      return { experiences: updatedExperiences };
-    });
+  updateArrayProp(newData, type) {
+    if(type === 'experience'){
+      this.setState((prevState) => {
+        let i = prevState.experiences.length - 1;
+        const updatedExperiences = [...prevState.experiences];
+        updatedExperiences[i] = newData;
+        return { experiences: updatedExperiences };
+      });
+    }
+    else{
+      this.setState((prevState) => {
+        let i = prevState.educations.length - 1;
+        const updatedEducations = [...prevState.educations];
+        updatedEducations[i] = newData;
+        return { educations: updatedEducations };
+      });
+    }
   };
 
-  deleteExperience(experience){
+  deleteArrayProp(data, type){
     this.setState((prevState) => {
-      const idxToDelete = prevState.experiences.indexOf(experience);
-      const newExperiences = [...prevState.experiences];
-      newExperiences.splice(idxToDelete, 1);
-      return { experiences: newExperiences };
+      const idxToDelete = prevState.experiences.indexOf(data);
+      const newArrayProp = [...(type ==='experience' ? prevState.experiences : prevState.educations)];
+      newArrayProp.splice(idxToDelete, 1);
+      return { [type+ 's']: newArrayProp };
     })
   }
 
@@ -69,9 +99,9 @@ class App extends Component {
           <Form
             {...this.state}
             handleInputChange={this.handleInputChange}
-            addExperience={this.addExperience}
-            updateExperience={this.updateExperience}
-            deleteExperience={this.deleteExperience}
+            addToArrayProp={this.addToArrayProp}
+            updateArrayProp={this.updateArrayProp}
+            deleteArrayProp={this.deleteArrayProp}
           />
         </div>
         <h1>Preview:</h1>

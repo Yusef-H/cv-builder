@@ -1,13 +1,13 @@
 import '../styles/Form.css';
 import React, { Component } from 'react';
 
-class Experience extends Component {
+class Education extends Component {
   constructor(props) {
     super(props);
-    const { jobTitle, company, startDate, endDate, description } = this.props.experience;
+    const { degreeType, university, startDate, endDate, description } = this.props.education;
     this.state = {
-      jobTitle: jobTitle,
-      company: company,
+      degreeType: degreeType,
+      university: university,
       startDate: startDate,
       endDate: endDate,
       description: description
@@ -19,33 +19,33 @@ class Experience extends Component {
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value }, () => {
-        this.props.updateArrayProp(this.state, 'experience');
+        this.props.updateArrayProp(this.state, 'education');
     });
   };
 
   render() {
-    const { jobTitle, company, startDate, endDate, description } = this.props.experience;
+    const { degreeType, university, startDate, endDate, description } = this.props.education;
     return (
       <>
-        <h2>Experience</h2>
+        <h2>Education</h2>
         <form>
           <div>
             <label htmlFor="job-title">Job Title:</label>
             <input
               type="text"
               id="job-title"
-              name="jobTitle"
-              value={jobTitle}
+              name="degreeType"
+              value={degreeType}
               onChange={this.handleInputChange}
             />
           </div>
           <div>
-            <label htmlFor="company">Company:</label>
+            <label htmlFor="university">university:</label>
             <input
               type="text"
-              id="company"
-              name="company"
-              value={company}
+              id="university"
+              name="university"
+              value={university}
               onChange={this.handleInputChange}
             />
           </div>
@@ -81,11 +81,11 @@ class Experience extends Component {
             ></textarea>
           </div>
         </form>
-        <button onClick={() => this.props.deleteArrayProp(this, 'experience')}>Delete</button>
+        <button onClick={() => this.props.deleteArrayProp(this, 'education')}>Delete</button>
       </>
     );
     
   }
 }
 
-export default Experience;
+export default Education;

@@ -35,7 +35,7 @@ hr{
     width: 100%;
 }
 
-.experiences-section{
+.experiences-section, .educations-section{
     margin-top: 15px;
     margin-bottom: 30px;
 }
@@ -45,20 +45,20 @@ hr{
     text-decoration: none;
 }
 
-.exp-container{
+.exp-container, .edu-container{
     margin-bottom: 40px;
 }
 
 
 
 
-.job-title-info{
+.job-title-info, .edu-header{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 }
 
-.job-title-info .titles{
+.job-title-info .titles, .edu-header .titles{
     margin-bottom: 15px;
     display: flex;
     gap: 15px;
@@ -66,7 +66,7 @@ hr{
     color :rgb(99, 97, 97);
     
 }
-.job-title-info .dates{
+.job-title-info .dates, .edu-header .dates{
     margin-bottom: 20px;
     display: flex;
     color :rgb(99, 97, 97);

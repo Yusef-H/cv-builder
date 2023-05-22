@@ -2,6 +2,7 @@ import '../styles/Form.css'
 import React, { Component } from 'react';
 import GeneralInfo from './GeneralInfo';
 import Experience from './Experience';
+import Education from './Education';
 
 class Form extends Component {
   render() {
@@ -11,10 +12,12 @@ class Form extends Component {
       email,
       phone,
       experiences,
+      educations,
       handleInputChange,
-      addExperience,
-      updateExperience,
-      deleteExperience
+      addToArrayProp,
+      updateArrayProp,
+      deleteArrayProp
+
     } = this.props;
 
     return (
@@ -28,13 +31,23 @@ class Form extends Component {
           handleInputChange={handleInputChange}
         />
 
-        <button onClick={addExperience}>Add Experience</button>
+        <button onClick={() => addToArrayProp('experience')}>Add Experience</button>
+        <button onClick={addToArrayProp}>Add Education</button>
         {experiences.map((experience, key) => (
           <Experience
             key={key}
             experience = {experience}
-            updateExperience={updateExperience}
-            deleteExperience={deleteExperience}
+            updateArrayProp={updateArrayProp}
+            deleteArrayProp={deleteArrayProp}
+          />
+        ))}
+
+        {educations.map((education, key) => (
+          <Education
+            key={key}
+            education = {education}
+            updateArrayProp={updateArrayProp}
+            deleteArrayProp={deleteArrayProp}
           />
         ))}
       </div>

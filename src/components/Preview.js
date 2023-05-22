@@ -3,7 +3,7 @@ import '../styles/Preview.css';
 class Preview extends Component{
 
     render() {
-        const { firstName, lastName, email, phone, experiences } = this.props;
+        const { firstName, lastName, email, phone, experiences, educations } = this.props;
         
         return (
             <div>
@@ -35,6 +35,28 @@ class Preview extends Component{
                                 </div>
                             </div>
                             <p className="desc">{experience.description}</p>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="educations-section">
+                    {educations.length > 0 && <h2 className="exp-title">Education</h2>}
+                    {educations.map((education, index) => (
+                        <div key={index} className="edu-container">
+                            <div className="edu-header">
+                                <div className="titles">
+                                    <p>{education.degreeType} </p>
+                                    <p>At</p>
+                                    <p>{education.university}</p>
+                                </div>
+                                <div className="dates">
+                                    <p>From: </p>
+                                    <p>{education.startDate}</p>
+                                    <p>Until: </p>
+                                    <p>{education.endDate}</p>
+                                </div>
+                            </div>
+                            <p className="desc">{education.description}</p>
                         </div>
                     ))}
                 </div>
