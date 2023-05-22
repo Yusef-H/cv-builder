@@ -19,7 +19,7 @@ class Experience extends Component {
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value }, () => {
-        this.props.updateArrayProp(this.state, 'experience');
+        this.props.updateArrayProp(this.state, 'experience', this.props.index);
     });
   };
 
@@ -81,7 +81,7 @@ class Experience extends Component {
             ></textarea>
           </div>
         </form>
-        <button onClick={() => this.props.deleteArrayProp(this, 'experience')}>Delete</button>
+        <button onClick={() => this.props.deleteArrayProp(this, 'experience', this.props.index)}>Delete</button>
       </>
     );
     

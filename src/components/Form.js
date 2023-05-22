@@ -17,7 +17,6 @@ class Form extends Component {
       addToArrayProp,
       updateArrayProp,
       deleteArrayProp
-
     } = this.props;
 
     return (
@@ -36,6 +35,7 @@ class Form extends Component {
         {experiences.map((experience, key) => (
           <Experience
             key={key}
+            index={key}
             experience = {experience}
             updateArrayProp={updateArrayProp}
             deleteArrayProp={deleteArrayProp}
@@ -45,6 +45,7 @@ class Form extends Component {
         {educations.map((education, key) => (
           <Education
             key={key}
+            index={key}
             education = {education}
             updateArrayProp={updateArrayProp}
             deleteArrayProp={deleteArrayProp}

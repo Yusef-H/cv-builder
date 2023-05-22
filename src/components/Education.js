@@ -19,7 +19,7 @@ class Education extends Component {
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value }, () => {
-        this.props.updateArrayProp(this.state, 'education');
+        this.props.updateArrayProp(this.state, 'education', this.props.index);
     });
   };
 
@@ -81,7 +81,7 @@ class Education extends Component {
             ></textarea>
           </div>
         </form>
-        <button onClick={() => this.props.deleteArrayProp(this, 'education')}>Delete</button>
+        <button onClick={() => this.props.deleteArrayProp(this, 'education', this.props.index)}>Delete</button>
       </>
     );
     

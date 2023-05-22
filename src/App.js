@@ -63,30 +63,27 @@ class App extends Component {
     }
   }
 
-  updateArrayProp(newData, type) {
+  updateArrayProp(newData, type, index) {
     if(type === 'experience'){
       this.setState((prevState) => {
-        let i = prevState.experiences.length - 1;
         const updatedExperiences = [...prevState.experiences];
-        updatedExperiences[i] = newData;
+        updatedExperiences[index] = newData;
         return { experiences: updatedExperiences };
       });
     }
     else{
       this.setState((prevState) => {
-        let i = prevState.educations.length - 1;
         const updatedEducations = [...prevState.educations];
-        updatedEducations[i] = newData;
+        updatedEducations[index] = newData;
         return { educations: updatedEducations };
       });
     }
   };
 
-  deleteArrayProp(data, type){
+  deleteArrayProp(data, type, index){
     this.setState((prevState) => {
-      const idxToDelete = prevState.experiences.indexOf(data);
       const newArrayProp = [...(type ==='experience' ? prevState.experiences : prevState.educations)];
-      newArrayProp.splice(idxToDelete, 1);
+      newArrayProp.splice(index, 1);
       return { [type+ 's']: newArrayProp };
     })
   }
