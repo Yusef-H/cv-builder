@@ -1,0 +1,24 @@
+
+.Preview{
+    border: 2px solid black;
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: clamp(300px, 80vmin, 800px);
+    
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+}
+
+.header h1{
+    margin-bottom: 0;
+    color: cornflowerblue
+}
+
+.header p{
+    margin-bottom: 0;
+}

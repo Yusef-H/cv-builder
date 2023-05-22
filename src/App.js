@@ -7,16 +7,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      experiences: []
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'JohnDoe@gmail.com',
+      phone: '0550000999',
+      experiences: [{
+        jobTitle: 'Software Engineer',
+        company: 'ABC Corporation',
+        startDate: '2022-01-01',
+        endDate: '2023-05-01',
+        description: 'Worked on developing and maintaining web applications using modern technologies.'
+      }]
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.addExperience = this.addExperience.bind(this);
     this.updateExperience = this.updateExperience.bind(this);
+    this.deleteExperience = this.deleteExperience.bind(this);
   }
 
   handleInputChange(event) {
@@ -45,18 +52,33 @@ class App extends Component {
     });
   };
 
+  deleteExperience(experience){
+    this.setState((prevState) => {
+      const idxToDelete = prevState.experiences.indexOf(experience);
+      const newExperiences = [...prevState.experiences];
+      newExperiences.splice(idxToDelete, 1);
+      return { experiences: newExperiences };
+    })
+  }
+
   render() {
     return (
-      <div className="App">
+      <>
         <h1>CV Builder With React</h1>
-        <Form
-          {...this.state}
-          handleInputChange={this.handleInputChange}
-          addExperience={this.addExperience}
-          updateExperience={this.updateExperience}
-        />
-        <Preview {...this.state} />
-      </div>
+        <div className="App">
+          <Form
+            {...this.state}
+            handleInputChange={this.handleInputChange}
+            addExperience={this.addExperience}
+            updateExperience={this.updateExperience}
+            deleteExperience={this.deleteExperience}
+          />
+        </div>
+        <h1>Preview:</h1>
+        <div className="Preview"> {/* Change to preview styles later */ }
+          <Preview {...this.state}/>
+        </div>
+      </>
     );
   }
 }

@@ -24,6 +24,7 @@ class Experience extends Component {
   };
 
   render() {
+    const { jobTitle, company, startDate, endDate, description } = this.props.experience;
     return (
       <>
         <h2>Experience</h2>
@@ -34,7 +35,7 @@ class Experience extends Component {
               type="text"
               id="job-title"
               name="jobTitle"
-              value={this.state.jobTitle}
+              value={jobTitle}
               onChange={this.handleInputChange}
             />
           </div>
@@ -44,7 +45,7 @@ class Experience extends Component {
               type="text"
               id="company"
               name="company"
-              value={this.state.company}
+              value={company}
               onChange={this.handleInputChange}
             />
           </div>
@@ -54,7 +55,7 @@ class Experience extends Component {
               type="date"
               id="start-date"
               name="startDate"
-              value={this.state.startDate}
+              value={startDate}
               onChange={this.handleInputChange}
             />
           </div>
@@ -64,7 +65,7 @@ class Experience extends Component {
               type="date"
               id="end-date"
               name="endDate"
-              value={this.state.endDate}
+              value={endDate}
               onChange={this.handleInputChange}
             />
           </div>
@@ -73,13 +74,15 @@ class Experience extends Component {
             <textarea
               id="description"
               name="description"
-              value={this.state.description}
+              value={description}
               onChange={this.handleInputChange}
             ></textarea>
           </div>
         </form>
+        <button onClick={() => this.props.deleteExperience(this)}>Delete</button>
       </>
     );
+    
   }
 }
 

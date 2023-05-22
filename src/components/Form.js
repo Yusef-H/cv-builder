@@ -13,7 +13,8 @@ class Form extends Component {
       experiences,
       handleInputChange,
       addExperience,
-      updateExperience
+      updateExperience,
+      deleteExperience
     } = this.props;
 
     return (
@@ -28,12 +29,13 @@ class Form extends Component {
         />
 
         <button onClick={addExperience}>Add Experience</button>
-
+        
         {experiences.map((experience, key) => (
           <Experience
             key={key}
-            experience={experience}
+            experience = {experience}
             updateExperience={updateExperience}
+            deleteExperience={deleteExperience}
           />
         ))}
       </div>
