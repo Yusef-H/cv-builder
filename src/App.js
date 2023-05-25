@@ -80,7 +80,7 @@ class App extends Component {
     }
   };
 
-  deleteArrayProp(data, type, index){
+  deleteArrayProp(type, index){
     this.setState((prevState) => {
       const newArrayProp = [...(type ==='experience' ? prevState.experiences : prevState.educations)];
       newArrayProp.splice(index, 1);
