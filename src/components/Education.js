@@ -1,91 +1,82 @@
 import '../styles/Form.css';
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-class Education extends Component {
-  constructor(props) {
-    super(props);
-    const { degreeType, university, startDate, endDate, description } = this.props.education;
-    this.state = {
-      degreeType: degreeType,
-      university: university,
-      startDate: startDate,
-      endDate: endDate,
-      description: description
-    };
+const Education = (props) => {
+  
+  const { degreeType, university, startDate, endDate, description } = props.education;
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
-
-  handleInputChange = (event) => {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
-    this.setState({ [name]: value }, () => {
-        this.props.updateArrayProp(this.state, 'education', this.props.index);
-    });
+    props.updateArrayProp({ ...props.education, [name]: value }, 'education', props.index);
   };
 
-  render() {
-    const { degreeType, university, startDate, endDate, description } = this.props.education;
-    return (
-      <>
-        <h2>Education</h2>
-        <form>
-          <div>
-            <label htmlFor="job-title">Job Title:</label>
-            <input
-              type="text"
-              id="job-title"
-              name="degreeType"
-              value={degreeType}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="university">university:</label>
-            <input
-              type="text"
-              id="university"
-              name="university"
-              value={university}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="start-date">Start Date:</label>
-            <input
-              type="date"
-              id="start-date"
-              name="startDate"
-              value={startDate}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="end-date">End Date:</label>
-            <input
-              type="date"
-              id="end-date"
-              name="endDate"
-              value={endDate}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          
-          
-          <div>
-            <label htmlFor="description">Description:</label>
-            <textarea
-              id="description"
-              name="description"
-              value={description}
-              onChange={this.handleInputChange}
-            ></textarea>
-          </div>
-        </form>
-        <button onClick={() => this.props.deleteArrayProp(this, 'education', this.props.index)}>Delete</button>
-      </>
-    );
-    
-  }
+  useEffect(() => {
+    props.updateArrayProp(props.education, 'education', props.index);
+  }, [props.education]);
+
+
+  
+  return (
+    <>
+      <h2>Education</h2>
+      <form>
+        <div>
+          <label htmlFor="job-title">Job Title:</label>
+          <input
+            type="text"
+            id="job-title"
+            name="degreeType"
+            value={degreeType}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="university">university:</label>
+          <input
+            type="text"
+            id="university"
+            name="university"
+            value={university}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="start-date">Start Date:</label>
+          <input
+            type="date"
+            id="start-date"
+            name="startDate"
+            value={startDate}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="end-date">End Date:</label>
+          <input
+            type="date"
+            id="end-date"
+            name="endDate"
+            value={endDate}
+            onChange={handleInputChange}
+          />
+        </div>
+        
+        
+        <div>
+          <label htmlFor="description">Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            value={description}
+            onChange={handleInputChange}
+          ></textarea>
+        </div>
+      </form>
+      <button onClick={() => props.deleteArrayProp('education', props.index)}>Delete</button>
+    </>
+  );
+  
 }
+
 
 export default Education;

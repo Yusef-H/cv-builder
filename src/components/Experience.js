@@ -1,22 +1,17 @@
 import '../styles/Form.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Experience = (props) => {
   const { jobTitle, company, startDate, endDate, description } = props.experience;
-  const [state, setState] = useState({
-    jobTitle: jobTitle,
-    company: company,
-    startDate: startDate,
-    endDate: endDate,
-    description: description
-  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setState({ [name]: value }, () => {
-        props.updateArrayProp(state, 'experience', props.index);
-    });
+    props.updateArrayProp({ ...props.experience, [name]: value }, 'experience', props.index);
   };
+
+  useEffect(() => {
+    props.updateArrayProp(props.experience, 'experience', props.index);
+  }, [props.experience]);
 
     
   return (
