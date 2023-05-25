@@ -1,15 +1,12 @@
 import '../styles/Form.css';
-import React, { Component } from 'react';
+import React from 'react';
 
-class GeneralInfo extends Component {
-  render() {
-    const {
-      firstName,
-      lastName,
-      email,
-      phone,
-      handleInputChange
-    } = this.props;
+const GeneralInfo = ({
+  firstName,
+  lastName,
+  email,
+  phone,
+  handleInputChange}) => {
 
     return (
       <form>
@@ -54,7 +51,7 @@ class GeneralInfo extends Component {
         </div>
       </form>
     );
-  }
 }
+
 
 export default GeneralInfo;
